@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contabilizei</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/darkula.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>body {
+    position: relative;
+}
+
+h1 {
+    margin-top: 5px;
+}
+
+h1, h2, h3, h4 {
+    color: #2b2b2b;
+}
+
+h2:after {
+    content: ' ';
+}
+
+h5 {
+    font-weight: bold;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    display: none;
+    position: absolute;
+    margin-left: 8px;
+}
+
+h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
+    color: #a5a5a5;
+    display: initial;
+}
+
+.nav.nav-tabs > li > a {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tab-content {
+    padding-top: 8px;
+}
+
+.table {
+    margin-bottom: 8px;
+}
+
+pre {
+    border-radius: 0px;
+    border: none;
+}
+
+pre code {
+    margin: -9.5px;
+}
+
+.request {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.response-text-sample {
+    padding: 0px !important;
+}
+
+.response-text-sample pre {
+    margin-bottom: 0px;
+}
+
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #2b2b2b;
+    padding-top: 20px;
+}
+
+#sidebar-wrapper ul {
+    width: 250px;
+}
+
+#sidebar-wrapper ul li {
+    margin-right: 10px;
+}
+
+#sidebar-wrapper ul li a:hover {
+    background: inherit;
+    text-decoration: none;
+}
+
+#sidebar-wrapper ul li a {
+    display: block;
+    color: #ECF0F1;
+    padding: 6px 15px;
+}
+
+#sidebar-wrapper ul li ul {
+    padding-left: 25px;
+}
+
+#sidebar-wrapper ul li ul li a {
+    padding: 1px 0px;
+}
+
+#sidebar-wrapper ul li a:hover,
+#sidebar-wrapper ul li a:focus {
+    color: #e0c46c;
+    border-right: solid 1px #e0c46c;
+}
+
+#sidebar-wrapper ul li.active > a {
+    color: #e0c46c;
+    border-right: solid 3px #e0c46c;
+}
+
+#sidebar-wrapper ul li:not(.active) ul {
+    display: none;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px 15px 15px 250px;
+}
+</style>
+</head>
+<body data-spy="scroll" data-target=".scrollspy">
+<div id="sidebar-wrapper">
+    <div class="scrollspy">
+    <ul id="main-menu" data-spy="affix" class="nav">         
+        <li>
+            <a href="#folder-cadastro-de-empresa">Cadastro de Empresa</a>
+            <ul>
+                 
+                <li>
+                    <a href="#request-cadastro-de-empresa-nova-empresa">Nova empresa</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-cadastro-de-empresa-listar-empresas">Listar empresas</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-cadastro-de-empresa-buscar-empresa-pelo-c-digo">Buscar empresa pelo código</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-cadastro-de-empresa-excluir-empresa">Excluir empresa</a>
+                </li>
+                 
+            </ul>
+        </li>
+          
+        <li>
+            <a href="#folder-cadastro-de-notas-fiscais">Cadastro de Notas Fiscais</a>
+            <ul>
+                 
+                <li>
+                    <a href="#request-cadastro-de-notas-fiscais-nova-nota-fiscal">Nova nota fiscal</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-cadastro-de-notas-fiscais-listar-notas-fiscais-por-m-s-e-empresa">Listar notas fiscais por mês e empresa</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-cadastro-de-notas-fiscais-excluir-nota-fiscal">Excluir nota fiscal</a>
+                </li>
+                 
+            </ul>
+        </li>
+          
+        <li>
+            <a href="#folder-impostos">Impostos</a>
+            <ul>
+                 
+                <li>
+                    <a href="#request-impostos-gerar-impostos-do-m-s-para-empresa">Gerar impostos do mês para empresa</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-impostos-listar-impostos-por-m-s-e-empresa">Listar impostos por mês e empresa</a>
+                </li>
+                  
+                <li>
+                    <a href="#request-impostos-marcar-imposto-como-pago">Marcar imposto como pago</a>
+                </li>
+                 
+            </ul>
+        </li>
+         
+    </ul>
+</div>
+
+</div>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Fullstack Java Teste</h1>
+                <p>Aplicação de notas fiscais para teste de fullstack java.</p>
+
+
+                 
+                <div class="endpoints-group">
+                    <h3 id="folder-cadastro-de-empresa">
+                        Cadastro de Empresa
+                        <a href="#folder-cadastro-de-empresa"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Serviços responsáveis pelo cadastro da empresa.</p>
+</div>
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-empresa-nova-empresa">
+                                Nova empresa
+                                <a href="#request-cadastro-de-empresa-nova-empresa"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-nova-empresa-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-nova-empresa-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-nova-empresa-example-curl">
+                                        <pre><code class="hljs curl">curl -X POST -H "Content-Type: application/json" -d '{
+	"name": "Pastore de Lima Consultoria ME",
+	"cnpj": "62115570000184",
+	"taxRegime": "SIMPLES_NACIONAL",
+	"taxAnnexes": [
+		"COMERCIO",
+		"INDUSTRIA"
+	],
+	"email": "felipepastorelima@gmail.com"
+}' "http://localhost:8080/contabilizei-server/api/company"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-nova-empresa-example-http">
+                                        <pre><code class="hljs http">POST /contabilizei-server/api/company HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"name": "Pastore de Lima Consultoria ME",
+	"cnpj": "62115570000184",
+	"taxRegime": "SIMPLES_NACIONAL",
+	"taxAnnexes": [
+		"COMERCIO",
+		"INDUSTRIA"
+	],
+	"email": "felipepastorelima@gmail.com"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-nova-empresa-responses-6d5339c6-b1ea-00a6-dc10-ae22213fb18e" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-nova-empresa-responses-6d5339c6-b1ea-00a6-dc10-ae22213fb18e">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>180</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 00:57:39 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>{
+    "id": 10,
+    "name": "Pastore de Lima Consultoria ME",
+    "cnpj": "67676776000105",
+    "taxRegime": "SIMPLES_NACIONAL",
+    "taxAnnexes": [
+        "COMERCIO",
+        "INDUSTRIA"
+    ],
+    "email": "felipepastorelima@gmail.com"
+}</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-empresa-listar-empresas">
+                                Listar empresas
+                                <a href="#request-cadastro-de-empresa-listar-empresas"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-listar-empresas-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-listar-empresas-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-listar-empresas-example-curl">
+                                        <pre><code class="hljs curl">curl -X GET -H "Content-Type: application/json" "http://localhost:8080/contabilizei-server/api/company"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-listar-empresas-example-http">
+                                        <pre><code class="hljs http">GET /contabilizei-server/api/company HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-listar-empresas-responses-76906842-2005-09a2-ce4e-551b9f0dcea5" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-listar-empresas-responses-76906842-2005-09a2-ce4e-551b9f0dcea5">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>182</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 00:57:55 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>[
+    {
+        "id": 10,
+        "name": "Pastore de Lima Consultoria ME",
+        "cnpj": "67676776000105",
+        "taxRegime": "SIMPLES_NACIONAL",
+        "taxAnnexes": [
+            "COMERCIO",
+            "INDUSTRIA"
+        ],
+        "email": "felipepastorelima@gmail.com"
+    }
+]</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-empresa-buscar-empresa-pelo-c-digo">
+                                Buscar empresa pelo código
+                                <a href="#request-cadastro-de-empresa-buscar-empresa-pelo-c-digo"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-buscar-empresa-pelo-c-digo-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-buscar-empresa-pelo-c-digo-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-buscar-empresa-pelo-c-digo-example-curl">
+                                        <pre><code class="hljs curl">curl -X GET -H "Content-Type: application/json" "http://localhost:8080/contabilizei-server/api/company/10"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-buscar-empresa-pelo-c-digo-example-http">
+                                        <pre><code class="hljs http">GET /contabilizei-server/api/company/10 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-buscar-empresa-pelo-c-digo-responses-3d2ad5e7-7bdc-74e8-2a3b-a3cfef818bdd" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-buscar-empresa-pelo-c-digo-responses-3d2ad5e7-7bdc-74e8-2a3b-a3cfef818bdd">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>180</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 00:58:09 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>{
+    "id": 10,
+    "name": "Pastore de Lima Consultoria ME",
+    "cnpj": "67676776000105",
+    "taxRegime": "SIMPLES_NACIONAL",
+    "taxAnnexes": [
+        "COMERCIO",
+        "INDUSTRIA"
+    ],
+    "email": "felipepastorelima@gmail.com"
+}</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-empresa-excluir-empresa">
+                                Excluir empresa
+                                <a href="#request-cadastro-de-empresa-excluir-empresa"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-excluir-empresa-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-excluir-empresa-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-excluir-empresa-example-curl">
+                                        <pre><code class="hljs curl">curl -X DELETE -H "Content-Type: application/json" -d '{
+	"name": "Company 1",
+	"cnpj": "67676776000105",
+	"taxRegime": "SIMPLES_NACIONAL",
+	"taxAnnexes": [
+		"COMERCIO",
+		"INDUSTRIA"
+	],
+	"email": "felipepastoree@gmail.com"
+}' "http://localhost:8080/contabilizei-server/api/company/11"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-excluir-empresa-example-http">
+                                        <pre><code class="hljs http">DELETE /contabilizei-server/api/company/11 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"name": "Company 1",
+	"cnpj": "67676776000105",
+	"taxRegime": "SIMPLES_NACIONAL",
+	"taxAnnexes": [
+		"COMERCIO",
+		"INDUSTRIA"
+	],
+	"email": "felipepastoree@gmail.com"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-excluir-empresa-responses-7e5acc6f-cd93-85c3-bf60-3cdc27ab39ff" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-excluir-empresa-responses-7e5acc6f-cd93-85c3-bf60-3cdc27ab39ff">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>0</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 00:59:06 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                </div>
+                  
+                <div class="endpoints-group">
+                    <h3 id="folder-cadastro-de-notas-fiscais">
+                        Cadastro de Notas Fiscais
+                        <a href="#folder-cadastro-de-notas-fiscais"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Serviços responsáveis pelo cadastro das notas fiscais da empresa.</p>
+</div>
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-notas-fiscais-nova-nota-fiscal">
+                                Nova nota fiscal
+                                <a href="#request-cadastro-de-notas-fiscais-nova-nota-fiscal"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-nova-nota-fiscal-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-nova-nota-fiscal-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-nova-nota-fiscal-example-curl">
+                                        <pre><code class="hljs curl">curl -X POST -H "Content-Type: application/json" -d '{
+	"code": "2",
+	"description": "Descrição da nota fiscal",
+	"amount": 100.99,
+	"issueDate": 1488930798425,
+	"taxAnnex": "COMERCIO"
+}' "http://localhost:8080/contabilizei-server/api/company/10/invoice"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-nova-nota-fiscal-example-http">
+                                        <pre><code class="hljs http">POST /contabilizei-server/api/company/10/invoice HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"code": "2",
+	"description": "Descrição da nota fiscal",
+	"amount": 100.99,
+	"issueDate": 1488930798425,
+	"taxAnnex": "COMERCIO"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-nova-nota-fiscal-responses-de3fd66e-279d-e128-9758-0c970fd929a7" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-nova-nota-fiscal-responses-de3fd66e-279d-e128-9758-0c970fd929a7">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>127</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 01:01:27 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>{
+    "id": 12,
+    "code": 1,
+    "description": "Descrição da nota fiscal",
+    "amount": "100.99",
+    "issueDate": 1488930798425,
+    "taxAnnex": "COMERCIO"
+}</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-notas-fiscais-listar-notas-fiscais-por-m-s-e-empresa">
+                                Listar notas fiscais por mês e empresa
+                                <a href="#request-cadastro-de-notas-fiscais-listar-notas-fiscais-por-m-s-e-empresa"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-listar-notas-fiscais-por-m-s-e-empresa-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-listar-notas-fiscais-por-m-s-e-empresa-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-listar-notas-fiscais-por-m-s-e-empresa-example-curl">
+                                        <pre><code class="hljs curl">curl -X GET -H "Content-Type: application/json" "http://localhost:8080/contabilizei-server/api/company/10/invoice?referenceDate=1488930798425"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-listar-notas-fiscais-por-m-s-e-empresa-example-http">
+                                        <pre><code class="hljs http">GET /contabilizei-server/api/company/10/invoice?referenceDate=1488930798425 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-listar-notas-fiscais-por-m-s-e-empresa-responses-4cee75ab-f2d7-3a17-c5e7-6ff1901ba2ec" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-listar-notas-fiscais-por-m-s-e-empresa-responses-4cee75ab-f2d7-3a17-c5e7-6ff1901ba2ec">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>129</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 01:01:42 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>[
+    {
+        "id": 12,
+        "code": 1,
+        "description": "Descrição da nota fiscal",
+        "amount": "100.99",
+        "issueDate": 1488855600000,
+        "taxAnnex": "COMERCIO"
+    }
+]</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-cadastro-de-notas-fiscais-excluir-nota-fiscal">
+                                Excluir nota fiscal
+                                <a href="#request-cadastro-de-notas-fiscais-excluir-nota-fiscal"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-excluir-nota-fiscal-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-excluir-nota-fiscal-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-excluir-nota-fiscal-example-curl">
+                                        <pre><code class="hljs curl">curl -X DELETE -H "Content-Type: application/json" -d '{
+	"name": "Company 1",
+	"cnpj": "67676776000105",
+	"taxRegime": "SIMPLES_NACIONAL",
+	"taxAnnexes": [
+		"COMERCIO",
+		"INDUSTRIA"
+	],
+	"email": "felipepastoree@gmail.com"
+}' "http://localhost:8080/contabilizei-server/api/company/10/invoice/13"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-excluir-nota-fiscal-example-http">
+                                        <pre><code class="hljs http">DELETE /contabilizei-server/api/company/10/invoice/13 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"name": "Company 1",
+	"cnpj": "67676776000105",
+	"taxRegime": "SIMPLES_NACIONAL",
+	"taxAnnexes": [
+		"COMERCIO",
+		"INDUSTRIA"
+	],
+	"email": "felipepastoree@gmail.com"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-excluir-nota-fiscal-responses-7d6d1e69-9448-ca2b-ed00-9a0280ddd19a" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-excluir-nota-fiscal-responses-7d6d1e69-9448-ca2b-ed00-9a0280ddd19a">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>0</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 01:04:05 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                </div>
+                  
+                <div class="endpoints-group">
+                    <h3 id="folder-impostos">
+                        Impostos
+                        <a href="#folder-impostos"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Serviços responsáveis pelo controle dos impostos.</p>
+</div>
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-impostos-gerar-impostos-do-m-s-para-empresa">
+                                Gerar impostos do mês para empresa
+                                <a href="#request-impostos-gerar-impostos-do-m-s-para-empresa"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-gerar-impostos-do-m-s-para-empresa-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-gerar-impostos-do-m-s-para-empresa-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-gerar-impostos-do-m-s-para-empresa-example-curl">
+                                        <pre><code class="hljs curl">curl -X POST -H "Content-Type: application/json" -d '{
+	"referenceDate": 1488930798425
+}' "http://localhost:8080/contabilizei-server/api/company/10/tax"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-gerar-impostos-do-m-s-para-empresa-example-http">
+                                        <pre><code class="hljs http">POST /contabilizei-server/api/company/10/tax HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"referenceDate": 1488930798425
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-gerar-impostos-do-m-s-para-empresa-responses-0bd0270f-3654-ecee-2c96-4f7875005477" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-gerar-impostos-do-m-s-para-empresa-responses-0bd0270f-3654-ecee-2c96-4f7875005477">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>121</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 01:14:29 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>[
+    {
+        "id": 16,
+        "name": "Simples Nacional",
+        "dueDate": 1492657200000,
+        "amount": "6.06",
+        "referenceDate": 1488855600000,
+        "payed": false
+    }
+]</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-impostos-listar-impostos-por-m-s-e-empresa">
+                                Listar impostos por mês e empresa
+                                <a href="#request-impostos-listar-impostos-por-m-s-e-empresa"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-listar-impostos-por-m-s-e-empresa-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-listar-impostos-por-m-s-e-empresa-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-listar-impostos-por-m-s-e-empresa-example-curl">
+                                        <pre><code class="hljs curl">curl -X GET -H "Content-Type: application/json" "http://localhost:8080/contabilizei-server/api/company/10/tax?referenceDate=1488930798425"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-listar-impostos-por-m-s-e-empresa-example-http">
+                                        <pre><code class="hljs http">GET /contabilizei-server/api/company/10/tax?referenceDate=1488930798425 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-listar-impostos-por-m-s-e-empresa-responses-0a2d9a3b-257a-218b-0485-09270100f443" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-listar-impostos-por-m-s-e-empresa-responses-0a2d9a3b-257a-218b-0485-09270100f443">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>120</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 01:28:19 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>[
+    {
+        "id": 16,
+        "name": "Simples Nacional",
+        "dueDate": 1492657200000,
+        "amount": "6.06",
+        "referenceDate": 1488855600000,
+        "payed": true
+    }
+]</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                        
+                        <div class="request">
+
+                            <h4 id="request-impostos-marcar-imposto-como-pago">
+                                Marcar imposto como pago
+                                <a href="#request-impostos-marcar-imposto-como-pago"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div></div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#request-marcar-imposto-como-pago-example-curl" data-toggle="tab">Curl</a></li>
+                                    <li role="presentation"><a href="#request-marcar-imposto-como-pago-example-http" data-toggle="tab">HTTP</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="request-marcar-imposto-como-pago-example-curl">
+                                        <pre><code class="hljs curl">curl -X PUT -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" "http://localhost:8080/contabilizei-server/api/company/10/tax/16/payed"</code></pre>
+                                    </div>
+                                    <div class="tab-pane" id="request-marcar-imposto-como-pago-example-http">
+                                        <pre><code class="hljs http">PUT /contabilizei-server/api/company/10/tax/16/payed HTTP/1.1
+Host: localhost:8080</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    
+                                    <li role="presentation" class="active">
+                                        <a href="#request-marcar-imposto-como-pago-responses-6b5698fe-7501-3893-7e2c-31c10bf63780" data-toggle="tab">
+                                            
+                                                Response
+                                            
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    
+                                    <div class="tab-pane active" id="request-marcar-imposto-como-pago-responses-6b5698fe-7501-3893-7e2c-31c10bf63780">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>X-Requested-With, Content-Type</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, DELETE, PUT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Length</th><td>118</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Date</th><td>Thu, 09 Mar 2017 01:28:34 GMT</td></tr>
+                                            
+                                            <tr><th style="width: 20%;">Server</th><td>Apache-Coyote/1.1</td></tr>
+                                            
+                                            
+                                                
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>{
+    "id": 16,
+    "name": "Simples Nacional",
+    "dueDate": 1492657200000,
+    "amount": "6.06",
+    "referenceDate": 1488855600000,
+    "payed": true
+}</code></pre>
+                                                </td></tr>
+                                                
+                                            
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <hr>
+                        </div>
+                        
+
+                    
+
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>

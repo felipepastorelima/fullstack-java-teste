@@ -1,0 +1,45 @@
+  <ul class="company-details-list mdl-list">
+    <li class="mdl-list__item mdl-list__item--two-line">
+      <span class="mdl-list__item-primary-content" style="height: 64px">
+        <span>Empresa</span>
+        <span class="mdl-list__item-sub-title">{{ vm.company.name }}</span>
+      </span>
+    </li>
+    <li class="mdl-list__item mdl-list__item--two-line">
+      <span class="mdl-list__item-primary-content">
+        <span>CNPJ</span>
+        <span class="mdl-list__item-sub-title">{{ vm.company.cnpj }}</span>
+      </span>
+    </li>
+    <li class="mdl-list__item mdl-list__item--two-line">
+      <span class="mdl-list__item-primary-content">
+        <span>Regime Tributário</span>
+        <span class="mdl-list__item-sub-title">{{ vm.taxRegimeLabel(vm.company.taxRegime) }}</span>
+      </span>
+    </li>
+    <li
+      class="mdl-list__item mdl-list__item--two-line"
+      ng-if="vm.isSimplesNacional()"
+    >
+      <span class="mdl-list__item-primary-content">
+        <span>Anexos</span>
+        <span class="mdl-list__item-sub-title">
+          <div ng-repeat="taxAnnex in vm.company.taxAnnexes">
+            - {{ vm.taxAnnexLabel(taxAnnex) }}
+          </div>
+        </span>
+      </span>
+    </li>
+    <li class="mdl-list__item mdl-list__item--two-line">
+      <span class="mdl-list__item-primary-content">
+        <span>Email</span>
+        <span class="mdl-list__item-sub-title">{{ vm.company.email }}</span>
+      </span>
+    </li>
+  </ul>
+</div>
+<div class="mdl-card__actions">
+  <button ng-click="vm.destroy()" class="delete-company-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    EXCLUIR
+  </button>
+</div>

@@ -1,179 +1,132 @@
-# Por que trabalhar na Contabilizei
+## Começando
 
-**Eleita a melhor startup B2B da América Latina em 2016, a Contabilizei** é um escritório de contabilidade online, líder de mercado, com sede em Curitiba (PR). Nosso propósito é resolver a dor e burocracia de micro e pequenas empresas ao se manterem regulares com o governo. Somos contadores, só que online, simples assim. Acreditamos no poder da tecnologia para melhorar continuamente a vida das pessoas. 
+## Pré requisitos
+* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) instalado e JAVA_HOME configurado no path
+* [Maven 3](https://maven.apache.org/) instalado e configurado no path
+* [Node 6+](https://nodejs.org/en/) instalado e configurado no path
+* [Tomcat 8](https://tomcat.apache.org/download-80.cgi) instalado e rodando.
+* [Google Chrome](https://www.google.com/chrome/) para testes E2E do client
 
-Se você tem espírito e comportamento empreendedor, muita disposição e proatividade para trabalhar em uma empresa em franca expansão, você é um forte candidato :)
+## Configurações padrão do Tomcat
 
-Como Desenvolvedor Full-stack você irá atuar no desenvolvimento de soluções em arquitetura Java Web MVC com RestFul APis (JAX-RS), integrações com outros sistemas (SOAP, XML, JSON), banco de dados NoSQL e soluções escaláveis, participando de todo o processo de desenvolvimento, desde tomadas de decisões à codificação e testes.
+O endereço padrão da API é: http://localhost:8080/contabilizei-server.
 
-### O que fazem os Ninjas da Contabilizei? O que comem (e bebem)? Onde vivem?
+Caso o Tomcat não esteja com as configurações padrão, ajustar arquivo:
+- `contabilizei-client/app/environment/environment.dev.js`
 
-Somos um time de desenvolvimento ágil, focado em fazer as coisas acontecerem. Trabalhamos com Kanban, entregas contínuas, Git, Cloud, aplicações distribuídas e mais uma porrada de tecnologias novas... Queremos que nosso cliente tenha o produto e a experiência mais fodásticos do planeta. Gostamos de compartilhar ideias, testar tecnologias e de cerveja :)
+## Gerar WAR da API
 
-# O trabalho por aqui
+    # Windows
+    scripts/windows/1-gerar-war-api.bat
 
-Que tal fazer parte de um time com atitude “get Fˆ%#ing things done”? Participar de uma das maiores disrupções no mercado? Ter a oportunidade de trabalhar com tecnologias e conceitos inovadores, como:
-* Práticas ágeis como Kanban / Scrum
-* Google Cloud Platform
-* Escalabilidade
-* Micro services e aplicações distribuídas
-* Kubernetes
-* Git
-* AngularJs
-* Material Design
-* BDD
+    # Mac
+    sh scripts/mac/1-gerar-war-api.sh
 
-Mais informações sobre a vaga você encontra aqui: [Desenvolvedor Full Stack Java na Contabilizei](https://jobs.lever.co/contabilizei/826c32bd-d800-475a-9f05-531e86dc4ea3)
+- Após gerado o war, ele estará disponível em: `contabilizei-server/target/contabilizei-server.war`.
+- Implantar o war no Tomcat.
 
-# O que preciso fazer?
+## Iniciar client na porta 8000
 
-Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos abaixo:
+    # Windows
+    scripts/windows/2-iniciar-client-porta-8000.bat
 
-* Faça um "fork" desse projeto para sua conta GitHub.
-* Implemente o desafio descrito no tópico abaixo.
-* Faça um push para seu repositório com o desafio implementado.
-* Envie um email para (souninja@contabilizei.com.br) avisando que finalizou o desafio com a url do seu fork.
-* Cruze os dedos e aguarde nosso contato.
+    # Mac
+    sh scripts/mac/2-iniciar-client-porta-8000.sh 
 
-# O Desafio de Notas Fiscais e Cálculo de Impostos
+Primeira execução pode demorar pois irá instalar as dependências do projeto.
 
-Você deverá criar 2 aplicações para cadastramento de notas fiscais e cálculo de impostos:
+Para alterar a porta, modificar os arquivos:
+- `contabilizei-client/package.json: scripts.start`.
+- `contabilizei-client/protractor.conf.js: exports.config.baseUrl`
 
-**Back-end:** aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.
+## Rodar testes da API
 
-**Front-end:** Single Page Application que se comunique com estes serviços.
+    # Windows
+    scripts/windows/3-rodar-testes-api.bat
 
-**Requisitos:**
+    # Mac
+    sh scripts/mac/3-rodar-testes-api.sh       
 
-- Permitir o cadastro de clientes (empresas)
-- Permitir o registro de notas fiscais emitidas
-- Realizar o cálculo dos impostos devidos por mês e ano de referência
-- Permitir a consulta de notas fiscais e impostos por mês e ano de referência
-- Permitir marcar o imposto como PAGO
+## Rodar testes do client E2E
 
-O cadastro do cliente da Contabilizei deve conter as seguintes informações:
+    # Windows
+    scripts/windows/4-rodar-testes-client-depende-script-2.bat
 
-* Razão Social
-* CNPJ
-* Regime Tributário (Simples Nacional ou Lucro Presumido)
-* Anexos (no caso de Regime Simples Nacional)
-* E-mail
+    # Mac
+    sh scripts/windows/4-rodar-testes-client-depende-script-2.sh    
 
-O cliente da Contabilizei deve registrar as notas fiscais para que seus impostos sejam calculados mensalmente. 
+- Os testes do client dependem do servidor client ativo (script 2).
+- Os testes do client NÃO dependem da API, pois as chamadas Http são todas mockadas.
 
-As Notas Fiscais contém as seguintes informações:
+## Documentação da API
 
-* Numero da Nota fiscal
-* Data de emissão
-* Descrição (Apenas texto. Pode ser um serviço prestado, um produto vendido ou produzido)
-* Valor
-* Anexo (1,2,3)
+A documentação da API encontra-se em: [docs/api.html](docs/api.html).
 
-Quando o cliente terminar de lançar suas notas fiscais, ele poderá solicitar o cálculo de seus impostos do mês. Cada mês deverá ter apenas 1 imposto de cada tipo. Os impostos deverão ter as seguintes informações:
+Documentação foi gerada utilizando a ferramenta [postmanerator](https://github.com/aubm/postmanerator).
 
-* Tipo de Imposto (Simples Nacional, Imposto de Renda, ISS, Cofins)
-* Vencimento
-* Valor
-* Mês e ano de referência (por exemplo, 10/2016)
-* Pago ou não
+## Limitações
 
-**Regras para o cálculo dos impostos:**
+Não funciona corretamente no Internet Explorer.
 
-- Se a empresa for do Simples Nacional, somente o imposto Simples Nacional é calculado. Para isso, somam-se as notas fiscais do mês por anexo e aplicam-se, para cada anexo as alíquotas conforme a tabela abaixo e criamos esse imposto.
+## Tecnologias
 
-| Anexo                     | Alíquota de imposto  |
-| --------------------------|:---------------------|
-| 1 - Comércio              | 6%                   |
-| 2 - Indústria             | 8,5%                 |
-| 3 - Prestação de serviços | 11%                  |
-
-Exemplo:
-
-| Número da nota | Valor      | Anexo | Valor x Alíquota |
-| ---------------|:-----------|:------|:-----------------|
-| 001            | 1.000,00   | 1     | 60,00            |
-| 002            | 5.000,00   | 3     | 550,00           |
-
-**Total Imposto Simples Nacional = R$ 610,00**
-
-Neste caso, será gerado 1 imposto do Tipo Simples Nacional cujo valor será R$ 610,00
-
-- Se a empresa for do Lucro Presumido, será necessário calcular o IRPJ, o ISS e o Cofins. Então, desconsideramos o anexo, somamos todas as notas fiscais do mês, aplicamos as alíquotas abaixo e criamos os impostos (IRPJ, ISS e Cofins).
-
-| Tipo do imposto           | Alíquota de imposto  |
-| --------------------------|:---------------------|
-| IRPJ                      | 4,8%                 |
-| ISS                       | 2%                   |
-| COFINS                    | 3%                   |
-
-Exemplo:
-
-| Número da nota | Valor      | IRPJ      | ISS    |COFINS      |
-| ---------------|:-----------|:----------|:-------|:-----------|
-| 001            | 1.000,00   | 48,00     | 20,00  |30,00       |
-| 002            | 500,00     | 24,00     | 10,00  |15,00       |
-
-**Total de impostos Lucro Presumido: IRPJ R$ 72,00, ISS R$ 30,00, COFINS R$ 45,00**
-
-Neste caso, serão gerados 3 impostos (IR, ISS e Cofins) cujos valores serão (R$ 72, R$ 30 e R$ 45)
-
-
-Após o cálculo dos impostos, o cliente ainda poderá consultar quais impostos está devendo por mês e marcar os impostos pagos.
-
-### Tecnologias
-
-Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.
-
-#### BACK-END
-
-**Opção 1**
-
-* Aplicação JavaEE utilizando framework [**Google App Engine para Java**](https://cloud.google.com/appengine/)
-* Banco de dados NOSQL [Datastore](https://cloud.google.com/datastore/)
-* RESTFul API com [Google Endpoints](https://cloud.google.com/appengine/docs/java/endpoints/) ou Jersey JAX-RS
-
-**Opção 2**
-
-* Aplicação pura Java EE (não utilize Spring, Struts, EJB, etc)
+* Aplicação pura Java EE
 * RESTful API JAX-RS utilizando Servlets ou framework Jersey
-* Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB)
+* Banco de dados HSQLDB com JPA
 
-#### FRONT-END
+### FRONT-END
 
-* Single Page Application utilizando apenas HTML5 e CSS3 
-* Javascript puro / JQuery (e plugins)
 * AngularJS 1.x
-* Bootstrap (http://getbootstrap.com/) ou Angular Material Design (será diferencial)
+* Angular Material Design
+* Protractor para testes
 
-**Recomendações gerais:**
+## Decisões de arquitetura
 
-* Não utilize frameworks ou BD que não foram indicados
-* Para servidor de aplicação utilize Jetty ou Tomcat (Não utilize: JBOSS, Wildfly ou qualquer outro servidor. Por quê? Critério de facilidade de configuração)
-* Utilize o Maven para gerenciamento de dependências
-* Utilizar automatizadores como Bower, Gulp, Grant é opcional.
+### Programação orientada a testes
 
-### Arquitetura e documentação
+Desenvolver orientado a testes além de criar mais segurança durante o ciclo do projeto, 
+é mais motivador, pois a cada pequena funcionalidade desenvolvida e testada se tem uma 'vitória'.
+Por isso, mesmo sendo um sistema demonstrativo, achei imprescindível o desenvolvimento de testes, tanto na camada de frontend quanto na de backend. 
 
-No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação. Descreva também os passos para executar corretamente seu projeto.
+### Organização dos arquivos por domínio/entidade
 
-### Avaliação
+É uma prática mais convencional entre programadores frontend do que backend, porém adotei em ambas as camadas.
+Acredito deixar os arquivos mais planos (menos sub-pastas) e mais fáceis de se encontrar.
+Por exemplo, se em uma tarefa é necessário modificar a entidade de um domínio, 
+normalmente também são necessárias modificações no DAO, Service, etc.. E nesta arquitetura estão todos na mesma pasta.
 
-Entre os critérios de avaliação estão:
+### Cálculo dos impostos utilizando o padrão Strategy
+Para o cálculo dos impostos utilizou-se o padrão strategy.
+A implementação encontra-se na pasta: `contabilizei-server/src/main/java/br/com/contabilizei/server/tax/generators`.
 
-* Facilidade de configuração do projeto
-* Performance
-* Código limpo e organização
-* Documentação de código
-* Documentação do projeto (readme)
-* Arquitetura
-* Boas práticas de desenvolvimento
-* Design Patterns
+* Cons: Mais complexo para entender.
+* Prós: Facilidade de mudanças com o mínimo de modificação no código existente.
 
-#### Bonus
+Por exemplo, supondo que fosse necessário criar um novo imposto fictício para o Simples Nacional cujo valor seria fixo e a data de vencimento no dia 10 do próximo mês.
+
+- Criar e implementar classe `.../tax/generators/strategies/dueDate/TaxDueDate10thDayOfNextMonthStrategy`.
+- Criar e implementar classe `.../tax/generators/strategies/amount/TaxAmountFixedAmountStrategy`
+- Criar e implementar classe `.../tax/generators/single/NovoImpostoTaxGenerator` utilizando as estratégias anteriormente criadas.
+- Adicionar o novo imposto na classe `.../tax/generators/SimplesNacionalTaxesGenerator`.
+
+O risco de adicionar bugs em algum processo existente seria mínimo, pois o único pedaço de código existente que seria modificado seria o da classe: `.../tax/generators/SimplesNacionalTaxesGenerator`.
+
+### Não validação de email
+A validação de email foi deixada de lado de propósito, pois em um sistema real é enviado um email
+de verificação, o que faz a validação de email por regex redundante.
+Mais detalhes em: https://davidcel.is/posts/stop-validating-email-addresses-with-regex/
+
+## Bonus
 
 Se voce fosse utilizar esse sistema comercialmente, que alterações vc faria para escalar e/ou facilitar a vida do usuario? OBS: Voce pode descrever isso aqui ou mostrar na implementação.
 
-# Sobre você
-
-Queremos saber um pouco mais sobre você também :) Por favor, responda o questionário do arquivo [questions.md](questions.md) e envie junto com seu projeto.
-
+- Utilizar banco de dados e servidor escalável na núvem. (Opção 1 sugerida por este teste).
+- Implementar HTTPS.
+- Melhorar retornos de erro. Na implementação atual retorna apenas 400 para erros de validação e 500 para erros de programação ou inesperados.
+- Confirmação e undo das ações. Ex.: Deletar empresa, nota fiscal e regerar impostos.
+- Criar autenticação.
+- Auditoria: Usuário que criou, alterou ou deletou e o horário da operação.
+- Monitoramento do servidor e logs.
+- Envio de emails aos usuários.
+- Criar páginas de erros: 404, etc..
+- Integração com outros sistemas (prefeitura, etc)

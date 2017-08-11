@@ -1,0 +1,164 @@
+<div
+  class="
+    mdl-layout
+    mdl-js-layout
+    mdl-color--grey-100
+    mdl-layout--fixed-header
+  "
+  style="display:none"
+>
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        <a class="link-unstyled" ui-sref="company-list">
+          Empresas
+        </a>
+        >
+        Nova Empresa
+      </span>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    <div class="mdl-card mdl-card-form mdl-shadow--6dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Nova Empresa</h2>
+      </div>
+
+      <div class="mdl-card__supporting-text w100 text-center">
+        <app-spinner ng-show="vm.loading"></app-spinner>
+      </div>
+
+      <form
+        ng-show="!vm.loading"
+        ng-submit="vm.save()"
+        name="vm.form"
+        novalidate="novalidate"
+      >
+        <div class="mdl-card__supporting-text mdl-grid">
+            <div class="name-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <input
+                class="mdl-textfield__input"
+                name="name"
+                ng-model="vm.company.name"
+                ng-maxlength="255"
+                required
+                autofocus
+              />
+              <label class="mdl-textfield__label">
+                Nome
+              </label>
+
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.name.$error"
+                ng-if="vm.form.name.$touched"
+              >
+                <span ng-message="required">O nome é obrigatório!</span>
+                <span ng-message="maxlength">O nome é muito longo!</span>
+              </span>
+            </div>
+
+            <div class="cnpj-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <input
+                class="mdl-textfield__input"
+                name="cnpj"
+                ng-model="vm.company.cnpj"
+                ui-br-cnpj-mask
+                required
+              />
+              <label class="mdl-textfield__label">
+                CNPJ
+              </label>
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.cnpj.$error"
+                ng-if="vm.form.cnpj.$touched"
+              >
+                <span ng-message="cnpj">O CNPJ é inválido!</span>
+                <span ng-message="required">O CNPJ é obrigatório!</span>
+              </span>
+            </div>
+
+            <div class="email-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <input
+                class="mdl-textfield__input"
+                name="email"
+                ng-model="vm.company.email"
+                ng-maxlength="255"
+                required
+              />
+              <label class="mdl-textfield__label">
+                Email
+              </label>
+
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.email.$error"
+                ng-if="vm.form.email.$touched"
+              >
+                <span ng-message="required">O email é obrigatório!</span>
+                <span ng-message="maxlength">O email é muito longo!</span>
+              </span>
+            </div>
+
+            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+              <select
+                name="taxRegime"
+                ng-model="vm.company.taxRegime"
+                class="mdl-selectfield__select"
+                required
+              >
+                <option ng-repeat="(key, value) in vm.taxRegimeOptions" value="{{ key }}">
+                  {{ value }}
+                </option>
+              </select>
+              <label class="mdl-selectfield__label" for="taxRegime">Regime Tributário</label>
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.taxRegime.$error"
+                ng-if="vm.form.taxRegime.$touched"
+              >
+                <span ng-message="required">O regime tributário é obrigatório!</span>
+              </span>
+            </div>
+
+          <div class="taxAnnexes-div" ng-show="vm.isSimplesNacional()">
+            <strong>Anexos</strong>
+            <label class="mdl-checkbox mdl-js-checkbox" ng-repeat="(key, value) in vm.taxAnnexOptions">
+                <input
+                  type="checkbox"
+                  name="taxAnnexes[]"
+                  value="{{ key }}"
+                  class="mdl-checkbox__input"
+                  ng-checked="vm.company.taxAnnexes.indexOf(key) > -1"
+                  ng-click="vm.toggleTaxAnnex(key)"
+                >
+                <span class="mdl-checkbox__label">{{ value }}</span>
+            </label>
+
+            <span
+              class="mdl-textfield__error"
+              ng-if="vm.form.$submitted && vm.company.taxAnnexes.length === 0"
+            >
+              Selecione ao menos um anexo!
+            </span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem" class="mdl-card__actions mdl-cell--12-col">
+          <button class="save-button mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
+            SALVAR
+          </button>
+
+          <a ui-sref="company-list" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            CANCELAR
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+
+

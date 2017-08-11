@@ -1,0 +1,16 @@
+<h2>
+  <button
+    class="previous-company-reference-date mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white"
+    ng-click="vm.previousReferenceDate()"
+  >
+    <i class="material-icons">keyboard_arrow_left</i>
+  </button>
+  {{ vm.referenceDateLabel }}
+  <button
+    class="next-company-reference-date mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--white mdl-color-text--indigo"
+    ng-disabled="vm.lastReferenceDate"
+    ng-click="vm.nextReferenceDate()"
+  >
+    <i class="material-icons">keyboard_arrow_right</i>
+  </button>
+</h2>

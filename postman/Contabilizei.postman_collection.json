@@ -1,0 +1,1149 @@
+{
+	"id": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+	"name": "Contabilizei",
+	"description": "Aplicação de notas fiscais para teste de fullstack java.",
+	"order": [],
+	"folders": [
+		{
+			"id": "8b6f0951-00e5-c187-bc9a-f41cb23d3c0d",
+			"name": "Cadastro de Empresa",
+			"description": "Serviços responsáveis pelo cadastro da empresa.",
+			"order": [
+				"7dd02ffb-f3ce-fdd3-2bf7-26c5edd0d710",
+				"aae88b60-0bd3-c13b-04be-e54284d85bde",
+				"43724a4e-68a1-1228-29b8-50c95171b141",
+				"bc36c5f1-7216-b69c-0a11-cad836c4c8e1"
+			],
+			"owner": "418508",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda"
+		},
+		{
+			"id": "bbc392c8-479f-851f-45da-1cd6e95ab0ef",
+			"name": "Cadastro de Notas Fiscais",
+			"description": "Serviços responsáveis pelo cadastro das notas fiscais da empresa.",
+			"order": [
+				"a84d4fed-5479-5970-1f28-7900b5c2a42b",
+				"733a559e-c7d6-63f7-efd4-3742d616570d",
+				"4189dd58-3bb7-f49f-8b11-17c3a962778f"
+			],
+			"owner": "418508",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda"
+		},
+		{
+			"id": "210fa9a2-96c8-2e67-cba4-d9db39fc8dae",
+			"name": "Impostos",
+			"description": "Serviços responsáveis pelo controle dos impostos.",
+			"order": [
+				"16118aec-8dd9-c67c-079a-4c8cf988464b",
+				"19d4e4a5-e189-eab6-7af9-4a2586776f68",
+				"7573237e-5ef7-bc45-6115-ff4ffd366b18"
+			],
+			"owner": "418508",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda"
+		}
+	],
+	"timestamp": 1488722864143,
+	"owner": "418508",
+	"public": false,
+	"requests": [
+		{
+			"id": "16118aec-8dd9-c67c-079a-4c8cf988464b",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10/tax",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489022073976,
+			"name": "Gerar impostos do mês para empresa",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 6688,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "121",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 01:14:29 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":16,\"name\":\"Simples Nacional\",\"dueDate\":1492657200000,\"amount\":\"6.06\",\"referenceDate\":1488855600000,\"payed\":false}]",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 121,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, W3siaWQiOjE2LCJuYW1lIjoiU2ltcGxlcyBOYWNpb25hbCIsImR1ZURhdGUiOjE0OTI2NTcyMDAwMDAsImFtb3VudCI6IjYuMDYiLCJyZWZlcmVuY2VEYXRlIjoxNDg4ODU1NjAwMDAwLCJwYXllZCI6ZmFsc2V9XQ==",
+					"state": {
+						"size": "normal"
+					},
+					"id": "0bd0270f-3654-ecee-2c96-4f7875005477",
+					"name": "Gerar impostos do mês para empresa",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10/tax",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"referenceDate\": 1488930798425\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"referenceDate\": 1488930798425\n}"
+		},
+		{
+			"id": "19d4e4a5-e189-eab6-7af9-4a2586776f68",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10/tax?referenceDate=1488930798425",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489022911211,
+			"name": "Listar impostos por mês e empresa",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 586,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "120",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 01:28:19 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":16,\"name\":\"Simples Nacional\",\"dueDate\":1492657200000,\"amount\":\"6.06\",\"referenceDate\":1488855600000,\"payed\":true}]",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 120,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, W3siaWQiOjE2LCJuYW1lIjoiU2ltcGxlcyBOYWNpb25hbCIsImR1ZURhdGUiOjE0OTI2NTcyMDAwMDAsImFtb3VudCI6IjYuMDYiLCJyZWZlcmVuY2VEYXRlIjoxNDg4ODU1NjAwMDAwLCJwYXllZCI6dHJ1ZX1d",
+					"state": {
+						"size": "normal"
+					},
+					"id": "0a2d9a3b-257a-218b-0485-09270100f443",
+					"name": "Listar impostos por mês e empresa",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10/tax?referenceDate=1488930798425",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}",
+						"method": "GET",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}"
+		},
+		{
+			"id": "4189dd58-3bb7-f49f-8b11-17c3a962778f",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10/invoice/13",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489021453689,
+			"name": "Excluir nota fiscal",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 4963,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "0",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 01:04:05 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plain",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 0,
+						"header": 250
+					},
+					"mimeType": "text",
+					"fileName": "response.txt",
+					"dataURI": "data:text/plain;base64, ",
+					"state": {
+						"size": "normal"
+					},
+					"id": "7d6d1e69-9448-ca2b-ed00-9a0280ddd19a",
+					"name": "Excluir nota fiscal",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10/invoice/13",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}",
+						"method": "DELETE",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}"
+		},
+		{
+			"id": "43724a4e-68a1-1228-29b8-50c95171b141",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489021101500,
+			"name": "Buscar empresa pelo código",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 206,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "180",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 00:58:09 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":10,\"name\":\"Pastore de Lima Consultoria ME\",\"cnpj\":\"67676776000105\",\"taxRegime\":\"SIMPLES_NACIONAL\",\"taxAnnexes\":[\"COMERCIO\",\"INDUSTRIA\"],\"email\":\"felipepastorelima@gmail.com\"}",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 180,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, eyJpZCI6MTAsIm5hbWUiOiJQYXN0b3JlIGRlIExpbWEgQ29uc3VsdG9yaWEgTUUiLCJjbnBqIjoiNjc2NzY3NzYwMDAxMDUiLCJ0YXhSZWdpbWUiOiJTSU1QTEVTX05BQ0lPTkFMIiwidGF4QW5uZXhlcyI6WyJDT01FUkNJTyIsIklORFVTVFJJQSJdLCJlbWFpbCI6ImZlbGlwZXBhc3RvcmVsaW1hQGdtYWlsLmNvbSJ9",
+					"state": {
+						"size": "normal"
+					},
+					"id": "3d2ad5e7-7bdc-74e8-2a3b-a3cfef818bdd",
+					"name": "Buscar empresa pelo código",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}",
+						"method": "GET",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}"
+		},
+		{
+			"id": "733a559e-c7d6-63f7-efd4-3742d616570d",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10/invoice?referenceDate=1488930798425",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489021303850,
+			"name": "Listar notas fiscais por mês e empresa",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 331,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "129",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 01:01:42 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":12,\"code\":1,\"description\":\"Descrição da nota fiscal\",\"amount\":\"100.99\",\"issueDate\":1488855600000,\"taxAnnex\":\"COMERCIO\"}]",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 129,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, W3siaWQiOjEyLCJjb2RlIjoxLCJkZXNjcmlwdGlvbiI6IkRlc2NyacOnw6NvIGRhIG5vdGEgZmlzY2FsIiwiYW1vdW50IjoiMTAwLjk5IiwiaXNzdWVEYXRlIjoxNDg4ODU1NjAwMDAwLCJ0YXhBbm5leCI6IkNPTUVSQ0lPIn1d",
+					"state": {
+						"size": "normal"
+					},
+					"id": "4cee75ab-f2d7-3a17-c5e7-6ff1901ba2ec",
+					"name": "Listar notas ficais por mês e empresa",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10/invoice?referenceDate=1488930798425",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}",
+						"method": "GET",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}"
+		},
+		{
+			"id": "7573237e-5ef7-bc45-6115-ff4ffd366b18",
+			"headers": "",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10/tax/16/payed",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489022922134,
+			"name": "Marcar imposto como pago",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 480,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "118",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 01:28:34 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":16,\"name\":\"Simples Nacional\",\"dueDate\":1492657200000,\"amount\":\"6.06\",\"referenceDate\":1488855600000,\"payed\":true}",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 118,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, eyJpZCI6MTYsIm5hbWUiOiJTaW1wbGVzIE5hY2lvbmFsIiwiZHVlRGF0ZSI6MTQ5MjY1NzIwMDAwMCwiYW1vdW50IjoiNi4wNiIsInJlZmVyZW5jZURhdGUiOjE0ODg4NTU2MDAwMDAsInBheWVkIjp0cnVlfQ==",
+					"state": {
+						"size": "normal"
+					},
+					"id": "6b5698fe-7501-3893-7e2c-31c10bf63780",
+					"name": "Marcar imposto como pago",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10/tax/16/payed",
+						"headers": [],
+						"data": null,
+						"method": "PUT",
+						"dataMode": "params"
+					}
+				}
+			]
+		},
+		{
+			"id": "7dd02ffb-f3ce-fdd3-2bf7-26c5edd0d710",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489021137215,
+			"name": "Nova empresa",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 477,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "180",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 00:57:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":10,\"name\":\"Pastore de Lima Consultoria ME\",\"cnpj\":\"67676776000105\",\"taxRegime\":\"SIMPLES_NACIONAL\",\"taxAnnexes\":[\"COMERCIO\",\"INDUSTRIA\"],\"email\":\"felipepastorelima@gmail.com\"}",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 180,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, eyJpZCI6MTAsIm5hbWUiOiJQYXN0b3JlIGRlIExpbWEgQ29uc3VsdG9yaWEgTUUiLCJjbnBqIjoiNjc2NzY3NzYwMDAxMDUiLCJ0YXhSZWdpbWUiOiJTSU1QTEVTX05BQ0lPTkFMIiwidGF4QW5uZXhlcyI6WyJDT01FUkNJTyIsIklORFVTVFJJQSJdLCJlbWFpbCI6ImZlbGlwZXBhc3RvcmVsaW1hQGdtYWlsLmNvbSJ9",
+					"state": {
+						"size": "normal"
+					},
+					"id": "6d5339c6-b1ea-00a6-dc10-ae22213fb18e",
+					"name": "Nova empresa",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Pastore de Lima Consultoria ME\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastorelima@gmail.com\"\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Pastore de Lima Consultoria ME\",\n\t\"cnpj\": \"62115570000184\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastorelima@gmail.com\"\n}"
+		},
+		{
+			"id": "a84d4fed-5479-5970-1f28-7900b5c2a42b",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/10/invoice",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489022131766,
+			"name": "Nova nota fiscal",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 333,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "127",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 01:01:27 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":12,\"code\":1,\"description\":\"Descrição da nota fiscal\",\"amount\":\"100.99\",\"issueDate\":1488930798425,\"taxAnnex\":\"COMERCIO\"}",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 127,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, eyJpZCI6MTIsImNvZGUiOjEsImRlc2NyaXB0aW9uIjoiRGVzY3Jpw6fDo28gZGEgbm90YSBmaXNjYWwiLCJhbW91bnQiOiIxMDAuOTkiLCJpc3N1ZURhdGUiOjE0ODg5MzA3OTg0MjUsInRheEFubmV4IjoiQ09NRVJDSU8ifQ==",
+					"state": {
+						"size": "normal"
+					},
+					"id": "de3fd66e-279d-e128-9758-0c970fd929a7",
+					"name": "Nova nota fiscal",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/10/invoice",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"code\": \"1\",\n\t\"description\": \"Descrição da nota fiscal\",\n\t\"amount\": 100.99,\n\t\"issueDate\": 1488930798425,\n\t\"taxAnnex\": \"COMERCIO\"\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"code\": \"2\",\n\t\"description\": \"Descrição da nota fiscal\",\n\t\"amount\": 100.99,\n\t\"issueDate\": 1488930798425,\n\t\"taxAnnex\": \"COMERCIO\"\n}"
+		},
+		{
+			"id": "aae88b60-0bd3-c13b-04be-e54284d85bde",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489021077056,
+			"name": "Listar empresas",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 239,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "182",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 00:57:55 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":10,\"name\":\"Pastore de Lima Consultoria ME\",\"cnpj\":\"67676776000105\",\"taxRegime\":\"SIMPLES_NACIONAL\",\"taxAnnexes\":[\"COMERCIO\",\"INDUSTRIA\"],\"email\":\"felipepastorelima@gmail.com\"}]",
+					"language": "json",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 182,
+						"header": 284
+					},
+					"mimeType": "text",
+					"fileName": "response.json",
+					"dataURI": "data:application/json;base64, W3siaWQiOjEwLCJuYW1lIjoiUGFzdG9yZSBkZSBMaW1hIENvbnN1bHRvcmlhIE1FIiwiY25waiI6IjY3Njc2Nzc2MDAwMTA1IiwidGF4UmVnaW1lIjoiU0lNUExFU19OQUNJT05BTCIsInRheEFubmV4ZXMiOlsiQ09NRVJDSU8iLCJJTkRVU1RSSUEiXSwiZW1haWwiOiJmZWxpcGVwYXN0b3JlbGltYUBnbWFpbC5jb20ifV0=",
+					"state": {
+						"size": "normal"
+					},
+					"id": "76906842-2005-09a2-ce4e-551b9f0dcea5",
+					"name": "Listar empresas",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}",
+						"method": "GET",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}"
+		},
+		{
+			"id": "bc36c5f1-7216-b69c-0a11-cad836c4c8e1",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/contabilizei-server/api/company/11",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489021145741,
+			"name": "Excluir empresa",
+			"description": "",
+			"collectionId": "99d546f8-ce6b-eca7-a86a-935cb1d19eda",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.",
+						"fromServer": true
+					},
+					"time": 233,
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With, Content-Type",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "0",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 09 Mar 2017 00:59:06 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plain",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"responseSize": {
+						"body": 0,
+						"header": 250
+					},
+					"mimeType": "text",
+					"fileName": "response.txt",
+					"dataURI": "data:text/plain;base64, ",
+					"state": {
+						"size": "normal"
+					},
+					"id": "7e5acc6f-cd93-85c3-bf60-3cdc27ab39ff",
+					"name": "Excluir empresa",
+					"request": {
+						"url": "http://localhost:8080/contabilizei-server/api/company/11",
+						"headers": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": "The mime type of this content",
+								"disabled": false
+							}
+						],
+						"data": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}",
+						"method": "DELETE",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"name\": \"Company 1\",\n\t\"cnpj\": \"67676776000105\",\n\t\"taxRegime\": \"SIMPLES_NACIONAL\",\n\t\"taxAnnexes\": [\n\t\t\"COMERCIO\",\n\t\t\"INDUSTRIA\"\n\t],\n\t\"email\": \"felipepastoree@gmail.com\"\n}"
+		}
+	]
+}

@@ -1,0 +1,77 @@
+<div ng-if="vm.loading" class="w100 default-margin text-center">
+  <app-spinner></app-spinner>
+</div>
+
+<div ng-if="!vm.loading" class="tax-list-card mdl-card w100 h100">
+  <div class="mdl-card__title" style="margin-top: 10px">
+    <h2 class="mdl-card__title-text">Impostos</h2>
+  </div>
+
+  <ul ng-if="vm.taxes.length > 0" class="tax-list mdl-list h100">
+    <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="tax in vm.taxes">
+      <span class="mdl-list__item-primary-content">
+        {{ tax.name }}
+
+        <span class="mdl-list__item-text-body">
+          Vencimento: {{ vm.formatDate(tax.dueDate) }} <br/>
+          <strong>{{ vm.formatCurrency(tax.amount) }}</strong>
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-action">
+        <div
+          ng-if="tax.payed"
+          ng-attr-id="{{ 'tax-payment-info-' + tax.id }}"
+          class="mdl-color-text--green"
+        >
+          <i class="material-icons">done</i>
+        </div>
+        <span ng-if="tax.payed" ng-attr-for="{{ 'tax-payment-info-' + tax.id }}" class="mdl-tooltip">Pago</span>
+
+        <a
+          ng-if="!tax.payed"
+          ng-click="vm.markAsPayed(tax.id)"
+          ng-attr-id="{{ 'tax-payment-button-' + tax.id }}"
+          class="mdl-button mdl-js-button mdl-button--icon"
+        >
+          <i class="material-icons">done</i>
+        </a>
+        <span ng-if="!tax.payed" ng-attr-for="{{ 'tax-payment-button-' + tax.id }}" class="mdl-tooltip">Marcar como pago</span>
+      </span>
+    </li>
+  </ul>
+
+  <div
+    ng-if="vm.taxes.length === 0 && !vm.hasInvoices()"
+    class="mdl-card__supporting-text"
+  >
+    Adicione notas fiscais para calcular os impostos de {{ vm.referenceDateLabel }}.
+  </div>
+
+  <div
+    class="mdl-card__actions"
+    ng-if="vm.taxes.length > 0 || vm.hasInvoices()"
+  >
+    <button
+      ng-click="vm.generate()"
+      ng-if="vm.taxes.length === 0 && vm.hasInvoices()"
+      class="tax-generation-button w100 mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+    >
+      Calcular impostos
+    </button>
+    <button
+      ng-click="vm.generate()"
+      ng-if="vm.taxes.length > 0 && vm.hasInvoices()"
+      class="tax-generation-button w100 mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+    >
+      Recalcular impostos
+    </button>
+    <button
+      ng-click="vm.generate()"
+      ng-if="vm.taxes.length > 0 && !vm.hasInvoices()"
+      class="tax-generation-button w100 mdl-button mdl-js-button mdl-button--raised"
+    >
+      Apagar impostos
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,180 @@
+<div
+  class="
+    mdl-layout
+    mdl-js-layout
+    mdl-color--grey-100
+    mdl-layout--fixed-header
+  "
+  style="display:none"
+>
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        <a class="link-unstyled" ui-sref="company-list">
+          Empresas
+        </a>
+        >
+        <a class="link-unstyled" ui-sref="company-show({id: vm.company.id})">
+          {{ vm.company.name }}
+        </a>
+        >
+        Nova Nota Fiscal
+      </span>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    <div class="mdl-card mdl-card-form mdl-shadow--6dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Nova Nota Fiscal</h2>
+      </div>
+
+      <div class="mdl-card__supporting-text w100 text-center">
+        <app-spinner ng-show="vm.loading"></app-spinner>
+      </div>
+
+      <form
+        ng-show="!vm.loading"
+        ng-submit="vm.save()"
+        name="vm.form"
+        novalidate="novalidate"
+      >
+        <div class="mdl-card__supporting-text mdl-grid">
+            <div class="code-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <input
+                class="mdl-textfield__input"
+                name="code"
+                ng-model="vm.invoice.code"
+                ng-maxlength="18"
+                ui-number-mask="0"
+                ui-hide-group-sep
+                min="1"
+                required
+                autofocus
+              />
+              <label class="mdl-textfield__label">
+                Código
+              </label>
+
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.code.$error"
+                ng-if="vm.form.code.$touched"
+              >
+                <span ng-message="required">O código é obrigatório!</span>
+                <span ng-message="min">O código deve ser maior que zero!</span>
+                <span ng-message="maxlength">O código é muito longo!</span>
+              </span>
+            </div>
+
+            <div class="description-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <textarea
+                rows="3"
+                class="mdl-textfield__input"
+                name="description"
+                ng-model="vm.invoice.description"
+                ng-maxlength="255"
+                required
+              ></textarea>
+              <label class="mdl-textfield__label">
+                Descrição
+              </label>
+
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.description.$error"
+                ng-if="vm.form.description.$touched"
+              >
+                <span ng-message="required">A descrição é obrigatória!</span>
+                <span ng-message="maxlength">O descrição é muito longa!</span>
+              </span>
+            </div>
+
+            <div class="amount-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <input
+                class="mdl-textfield__input"
+                name="amount"
+                ng-model="vm.invoice.amount"
+                ui-money-mask
+                min="0.01"
+                ng-maxlength="20"
+                required
+              />
+              <label class="mdl-textfield__label">
+                Valor
+              </label>
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.amount.$error"
+                ng-if="vm.form.amount.$touched"
+              >
+                <span ng-message="maxlength">O valor excede o limite!</span>
+                <span ng-message="required">O valor é obrigatório!</span>
+                <span ng-message="min">O valor deve ser maior que zero!</span>
+              </span>
+            </div>
+
+            <div class="issue-date-textfield mdl-textfield mdl-textfield--floating-label mdl-js-textfield">
+              <input
+                class="mdl-textfield__input"
+                name="issueDate"
+                ng-model="vm.invoice.issueDate"
+                ui-date-mask
+                app-past-or-equal-date
+                required
+              />
+              <label class="mdl-textfield__label">
+                Data de emissão
+              </label>
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.issueDate.$error"
+                ng-if="vm.form.issueDate.$touched"
+              >
+                <span ng-message="date">Data de emissão é inválida!</span>
+                <span ng-message="pastOrEqualDate">Data de emissão não pode ser uma data futura!</span>
+                <span ng-message="required">Data de emissão é obrigatória!</span>
+              </span>
+            </div>
+
+            <div
+              ng-if="vm.isSimplesNacional()"
+              class="tax-annex-selectfield mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label"
+            >
+              <select
+                name="taxAnnex"
+                ng-model="vm.invoice.taxAnnex"
+                class="mdl-selectfield__select"
+                required
+              >
+                <option ng-repeat="(key, value) in vm.taxAnnexOptions" value="{{ key }}">
+                  {{ value }}
+                </option>
+              </select>
+              <label class="mdl-selectfield__label" for="taxAnnex">Anexo</label>
+              <span
+                class="mdl-textfield__error"
+                ng-messages="vm.form.taxAnnex.$error"
+                ng-if="vm.form.taxAnnex.$touched"
+              >
+                <span ng-message="required">O anexo é obrigatório!</span>
+              </span>
+            </div>
+        </div>
+
+        <div style="margin-top: 1rem" class="mdl-card__actions mdl-cell--12-col">
+          <button class="save-button mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
+            SALVAR
+          </button>
+
+          <a ui-sref="company-show({id: vm.company.id})" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            CANCELAR
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+
+

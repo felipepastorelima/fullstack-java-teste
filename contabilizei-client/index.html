@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+  <title>Contabilizei - Full Stack Java Teste</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
+  <link rel="stylesheet" href="node_modules/mdl-selectfield/dist/mdl-selectfield.min.css">
+  <link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <ui-view>
+    Carregando...
+  </ui-view>
+
+  <div id="toast_error" class="mdl-color--red-600 mdl-color-text--white mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+  </div>
+
+  <div id="toast_success" class="mdl-color--green mdl-color-text--white mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+  </div>
+
+  <!-- Vendor -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/moment/moment.js"></script>
+  <script src="node_modules/moment/locale/pt-br.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-i18n/angular-locale_pt-br.js"></script>
+  <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="node_modules/angular-mocks/angular-mocks.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="node_modules/material-design-lite/material.min.js"></script>
+  <script src="node_modules/mdl-selectfield/dist/mdl-selectfield.min.js"></script>
+  <script src="node_modules/numeral/min/numeral.min.js"></script>
+  <script src="node_modules/numeral/min/locales/pt-br.min.js"></script>
+  <script src="node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js"></script>
+
+  <!-- App -->
+  <script src="app/app.module.js"></script>
+  <script src="app/app.routing.js"></script>
+  <script src="app/app.config.js"></script>
+
+  <!-- Core -->
+  <script src="app/core/core.module.js"></script>
+  <script src="app/core/toast/toast.service.js"></script>
+  <script src="app/core/spinner/spinner.directive.js"></script>
+  <script src="app/core/error/server-error-handler.service.js"></script>
+  <script src="app/core/autofocus/autofocus.directive.js"></script>
+  <script src="app/core/validator/past-or-equal-date.validator.js"></script>
+  <script src="app/core/core.routing.js"></script>
+
+  <!-- Company -->
+  <script src="app/company/company.module.js"></script>
+  <script src="app/company/company.service.js"></script>
+  <script src="app/company/company-details/company-details.directive.js"></script>
+  <script src="app/company/company-reference-date/company-reference-date.directive.js"></script>
+  <script src="app/company/company-list/company-list.controller.js"></script>
+  <script src="app/company/company-form/company-form.controller.js"></script>
+  <script src="app/company/company-show/company-show.controller.js"></script>
+  <script src="app/company/company.routing.js"></script>
+
+    <!-- Invoice -->
+  <script src="app/invoice/invoice.module.js"></script>
+  <script src="app/invoice/invoice.service.js"></script>
+  <script src="app/invoice/invoice-list/invoice-list.directive.js"></script>
+  <script src="app/invoice/invoice-form/invoice-form.controller.js"></script>
+  <script src="app/invoice/invoice-list/invoice-presence-checker.service.js"></script>
+  <script src="app/invoice/invoice.routing.js"></script>
+
+  <!-- Tax -->
+  <script src="app/tax/tax.module.js"></script>
+  <script src="app/tax/tax-regime.constant.js"></script>
+  <script src="app/tax/tax-annex.constant.js"></script>
+  <script src="app/tax/tax.service.js"></script>
+  <script src="app/tax/tax-list/tax-list.directive.js"></script>
+
+  <!--
+    Configuração de ambiente.
+    TODO: Criar rotina de build para substituir este arquivo pelo ambiente desejado.
+  -->
+  <script src="app/environment/environment.dev.js"></script>
+
+</body>
+
+</html>
